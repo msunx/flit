@@ -11,7 +11,7 @@ export CLANG_MODULE_CACHE_PATH="$ROOT/build/module-cache"
 APP="${FLIT_BUILD_APP:-$ROOT/build/Flit.app}"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 FLAGS=(-Onone -g)
-if [[ "$CONFIG" == release ]]; then FLAGS=(-O); fi
+if [[ "$CONFIG" == release ]]; then FLAGS=(-O -file-prefix-map "$ROOT=Flit"); fi
 FLIT_BUILD_SDK="${FLIT_BUILD_SDK:-$(xcrun --show-sdk-path)}"
 OVERLAY="$(python3 "$ROOT/scripts/toolchain-overlay.py")"
 if [[ -n "$OVERLAY" ]]; then FLAGS+=(-vfsoverlay "$OVERLAY" -Xcc -ivfsoverlay -Xcc "$OVERLAY"); fi
@@ -19,6 +19,7 @@ swiftc -explicit-module-build -parse-as-library -swift-version 5 -target "$(unam
     -module-cache-path "$CLANG_MODULE_CACHE_PATH" "${FLAGS[@]}" -module-name Flit \
     "$ROOT"/Sources/Flit/*.swift -framework AppKit -framework ScreenCaptureKit -framework ServiceManagement \
     -o "$APP/Contents/MacOS/Flit"
+if [[ "$CONFIG" == release ]]; then strip -S -x "$APP/Contents/MacOS/Flit"; fi
 cp "$ROOT/Resources/Info.plist" "$APP/Contents/Info.plist"
 cp "$ROOT/Resources/ThirdPartyNotices.txt" "$APP/Contents/Resources/ThirdPartyNotices.txt"
 if [[ -f "$ROOT/Resources/Flit.icns" ]]; then

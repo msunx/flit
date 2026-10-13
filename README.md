@@ -12,21 +12,18 @@
 
 ## 开始使用
 
-当前提供源码构建，产物为本机试用版本。需要 Apple Command Line Tools 和 Python 3；构建目标为 macOS 14+，已验收环境为 Apple Silicon / macOS 27.0.1，其他系统版本尚未逐一验证。
+[下载最新版本](https://github.com/msunx/flit/releases/latest) · [v0.1.6 发布说明](docs/releases/0.1.6.md)
 
-在项目根目录执行：
+当前提供 **Apple Silicon（arm64）** 安装包。下载 DMG 后，将 `Flit.app` 拖入 `Applications`，再从“应用程序”打开；也可下载 ZIP 解压安装。构建目标为 macOS 14+，已验收环境为 Apple Silicon / macOS 27.0.1，其他系统版本尚未逐一验证。
 
-```sh
-zsh scripts/build.sh release
-open build/Flit.app
-```
+安装包使用本地临时签名，**未经 Developer ID 签名或 Apple 公证**。若 macOS 阻止首次打开，请确认下载来源后，按 [Apple 的说明](https://support.apple.com/102445) 在系统设置中确认打开。
 
 首次运行会打开偏好设置。在「权限与启动」中完成授权后，就可以按住 **⌘**、按 **Tab** 选择、松开 **⌘** 切换。
 
 - **辅助功能（必需）**：读取空间中的窗口、响应全局快捷键、切换目标；开启 Dock 固定时也使用此权限。
 - **屏幕录制（可选）**：显示窗口与桌面预览。未开启时，仍可按名称与图标切换。
 
-应用使用本地临时签名，尚未提供 Developer ID 签名、公证或通用架构安装包。**如需移动应用，请在最终放置位置完成授权**；重编译或移动后，macOS 可能要求重新授权。更多说明见[构建与权限排查](docs/development.md#构建与签名)。
+**请在最终安装位置完成授权**；升级、重编译或移动后，macOS 可能要求重新授权。自行编译需要 Apple Command Line Tools 和 Python 3，步骤见[构建与权限排查](docs/development.md#构建与签名)。
 
 ## 顺手的切换方式
 

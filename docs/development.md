@@ -23,9 +23,21 @@ open build/Flit.app
 
 本机工具链还存在两份相同的 SwiftBridging 模块定义。脚本仅在确认内容一致时生成项目内的 VFS overlay，忽略重复定义，不修改系统工具链文件。
 
-产物使用本地临时签名（ad-hoc），尚未做 Developer ID 签名、公证、DMG 或通用架构分发。已验收环境为 Apple Silicon / macOS 27.0.1，部署目标不等同于所有 macOS 14+ 版本均已验证。
+产物使用本地临时签名（ad-hoc），尚未做 Developer ID 签名、Apple 公证或通用架构分发。已验收环境为 Apple Silicon / macOS 27.0.1，部署目标不等同于所有 macOS 14+ 版本均已验证。
 
 建议先确定应用的安装位置，再配置权限和登录启动。重新构建会改变临时签名，移动路径也可能使原授权失效；不必为了重复检查而重新编译。
+
+## 制作发布包
+
+```sh
+zsh scripts/package-release.sh
+```
+
+脚本从 `Resources/Info.plist` 读取版本，按当前主机架构进行优化构建，产物写入 `build/releases/<版本>-<架构>/`，包含 DMG、ZIP 和 `SHA256SUMS.txt`。DMG 内提供应用、Applications 快捷方式和安装说明；ZIP 只包含应用包。
+
+发布构建会映射源码路径并移除调试及本地符号，避免包含本机源码路径。打包使用独立应用副本，不覆盖 `build/Flit.app`。输出目录已存在时脚本会停止；重复打包可通过 `FLIT_RELEASE_DIR` 指定新的输出目录。
+
+当前 GitHub Release 提供 Apple Silicon 包。脚本不自动上传、不自动公证，也不组合 Intel 与 Apple Silicon 架构；发布前需验证包内容、签名、架构、原生界面渲染和校验和，再上传对应资产。
 
 ## 权限排查
 
@@ -108,6 +120,7 @@ ScreenCaptureKit 按需获取窗口画面，图像只在内存缓存，不写入
 | [Sources/Flit](../Sources/Flit) | 应用状态、空间切换、Dock 固定与原生界面 |
 | [Resources](../Resources) | 应用图标、元数据与第三方声明 |
 | [scripts/build.sh](../scripts/build.sh) | 本机应用构建与临时签名 |
+| [scripts/package-release.sh](../scripts/package-release.sh) | 独立发布构建、DMG／ZIP 与校验和 |
 | [NativePreview.swift](../Sources/Flit/NativePreview.swift) | 固定演示数据与原生界面渲染入口 |
 | [README 素材说明](../assets/readme/README.md) | SVG 与演示界面图的来源和复现方式 |
 
