@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+    <key>CFBundleName</key><string>Flit</string>
+    <key>CFBundleDisplayName</key><string>Flit</string>
+    <key>CFBundleIdentifier</key><string>com.muyang.flit</string>
+    <key>CFBundleExecutable</key><string>Flit</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>0.1.6</string>
+    <key>CFBundleVersion</key><string>7</string>
+    <key>CFBundleIconFile</key><string>Flit</string>
+    <key>LSMinimumSystemVersion</key><string>14.0</string>
+    <key>LSUIElement</key><true/>
+    <key>NSHighResolutionCapable</key><true/>
+    <key>NSAccessibilityUsageDescription</key><string>Flit 需要切换窗口与桌面、响应快捷键，并在你开启 Dock 固定后限制其他屏幕底部的唤出动作。</string>
+    <key>NSScreenCaptureUsageDescription</key><string>Flit 使用屏幕录制权限为窗口与桌面生成预览，图像只在内存中缓存。</string>
+</dict></plist>

@@ -1,0 +1,46 @@
+# macOS metadata
+.DS_Store
+._*
+.Spotlight-V100/
+.Trashes/
+
+# Swift / Xcode build output and per-user state
+/.build/
+/build/
+/DerivedData/
+/dist/
+/.swiftpm/
+*.app/
+*.dSYM/
+*.xcuserstate
+xcuserdata/
+
+# Local design explorations, screenshots, and acceptance records
+/design/
+/DESIGN.md
+
+# Editor and agent workspace state
+/.idea/
+/.vscode/
+/.codex/
+/.claude/
+/.agents/
+/.codegraph/
+
+# Local environment and credentials (keep templates shareable)
+.env
+.env.*
+!.env.example
+!.env.sample
+*.p12
+*.pfx
+*.key
+
+# Caches and temporary output
+__pycache__/
+*.py[cod]
+.cache/
+*.log
+*.tmp
+*.swp
+*~

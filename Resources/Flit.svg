@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <path id="pane" d="M0 11 Q0 7 4 6 L17 2 Q21 1 21 5 L21 31 Q21 35 17 36 L4 40 Q0 41 0 37 Z"/>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#332C3E" flood-opacity=".10"/></filter>
+  </defs>
+  <rect x="32" y="32" width="960" height="960" rx="212" fill="#FCFAFF" stroke="#FFFFFF" stroke-width="6" filter="url(#shadow)"/>
+  <use href="#pane" transform="translate(296 314) scale(12)" fill="#7951D2"/>
+  <use href="#pane" transform="translate(494 206) scale(12)" fill="#BEA5F0"/>
+</svg>
